@@ -78,16 +78,37 @@ let g:EasyGrepCommand=1
 let g:EasyGrepRecursive=1
 let g:EasyGrepFilesToExclude=".svn,.git,node_modules"
 
-"YouCompleteMe"
-" let g:ycm_autoclose_preview_window_after_completion = 1
+"Tagbar"
+let g:tagbar_width = 30
 
-" Grep silver surfer
+"Gundo"
+let g:gundo_width = 20
+let g:gundo_preview_bottom = 1
+let g:gundo_preview_height = 10
+
+"Syntastic"
+let g:syntastic_check_on_open=1
+let g:syntastic_error_symbol='X'
+let g:syntastic_warning_symbol='!'
+let g:syntastic_auto_loc_list=2
+let g:syntastic_loc_list_height=5
+
+"vim-airline theme"
+let g:airline_theme='dark'
+
+"YouCompleteMe"
+"let g:ycm_autoclose_preview_window_after_completion = 1
+
+" The Silver Searcher
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files.
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 1
 endif
 
 " ==== Custom navigation ====
@@ -162,44 +183,6 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-"NERDTreeTabs"
-let g:nerdtree_tabs_open_on_console_startup=1
-
-"NERDTree"
-let g:NERDTreeWinSize = 30
-
-"Tagbar"
-let g:tagbar_width = 30
-
-"Gundo"
-let g:gundo_width = 20
-let g:gundo_preview_bottom = 1
-let g:gundo_preview_height = 10
-
-"Syntastic"
-let g:syntastic_check_on_open=1
-let g:syntastic_error_symbol='X'
-let g:syntastic_warning_symbol='!'
-let g:syntastic_auto_loc_list=2
-let g:syntastic_loc_list_height=5
-
-"vim-airline theme"
-let g:airline_theme='dark'
-
-"YouCompleteMe"
-"let g:ycm_autoclose_preview_window_after_completion = 1
-
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 1
-endif
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
