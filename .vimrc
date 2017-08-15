@@ -1,5 +1,5 @@
 " Maintainer:	David Qu
-" Last change: 6/21/17
+" Last change:	2017 February 21
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -107,6 +107,10 @@ endif
 set number
 highlight LineNr ctermfg=grey
 
+" Always show line numbers, but only in current window.
+:au WinEnter * :setlocal number
+:au WinLeave * :setlocal nonumber
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -149,18 +153,53 @@ inoremap <C-U> <C-G>u<C-U>
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
-  set ttymouse=xterm2
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  set synmaxcol=99999
   set hlsearch
 endif
 
+"NERDTreeTabs"
+let g:nerdtree_tabs_open_on_console_startup=1
 
+"NERDTree"
+let g:NERDTreeWinSize = 30
+
+"Tagbar"
+let g:tagbar_width = 30
+
+"Gundo"
+let g:gundo_width = 20
+let g:gundo_preview_bottom = 1
+let g:gundo_preview_height = 10
+
+"Syntastic"
+let g:syntastic_check_on_open=1
+let g:syntastic_error_symbol='X'
+let g:syntastic_warning_symbol='!'
+let g:syntastic_auto_loc_list=2
+let g:syntastic_loc_list_height=5
+
+"vim-airline theme"
+let g:airline_theme='dark'
+
+"YouCompleteMe"
+"let g:ycm_autoclose_preview_window_after_completion = 1
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 1
+endif
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -181,6 +220,12 @@ if has("autocmd")
   autocmd vimenter * NERDTree
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+  " Change focus to file"
+  autocmd VimEnter * wincmd p
+
+  " Open TagBar automatically"
+  " autocmd VimEnter * nested :call tagbar#autoopen(1) 
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -210,10 +255,16 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
+" Fold
+set foldmethod=syntax
+
 " Color
 set t_Co=256
+"let g:solarized_termcolors=256
+"set background=dark
 colorscheme desert
 
-" Keys
+"Keys"
+nmap <F8> :TagbarToggle<CR>
+nnoremap <F5> :GundoToggle<CR>
 let mapleader=","
-set foldmethod=syntax
