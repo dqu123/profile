@@ -1,7 +1,15 @@
-pull-local:
-	cp ~/.vimrc .; cp ~/.tmux.conf .
+pull-local: pull-vimrc pull-tmux
 
-update:
-	cp .vimrc ~; cp .tmux.conf .
+pull-vimrc:
+	cp ~/.vimrc .
 
-.PHONY: pull-local update
+pull-tmux:
+	cp ~/.tmux.conf .
+
+update: update-vimrc update-tmux
+
+update-vimrc:
+	cp .vimrc ~
+
+update-tmux:
+	cp .tmux.conf ~
