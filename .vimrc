@@ -182,6 +182,7 @@ inoremap <C-U> <C-G>u<C-U>
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
+  set ttymouse=xterm2
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -189,6 +190,7 @@ endif
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+  set synmaxcol=99999
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -216,7 +218,7 @@ if has("autocmd")
   autocmd VimEnter * wincmd p
 
   " Open TagBar automatically"
-  " autocmd VimEnter * nested :call tagbar#autoopen(1) 
+  " autocmd VimEnter * nested :call tagbar#autoopen(1)
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
