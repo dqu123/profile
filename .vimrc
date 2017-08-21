@@ -38,6 +38,7 @@ Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
 Plugin 'rking/ag.vim'
+Plugin 'bkad/CamelCaseMotion'
 "Plugin 'pangloss/vim-javascript'
 "Plugin 'mxw/vim-jsx'
 
@@ -118,6 +119,9 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 1
 endif
+
+" CamelCaseMotion
+call camelcasemotion#CreateMotionMappings('<leader>')
 
 " ==== Custom navigation ====
 "
