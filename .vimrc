@@ -66,6 +66,8 @@ if v:progname =~? "evim"
   finish
 endif
 
+let mapleader=","
+
 " vim-go
 let g:go_fmt_experimental = 1
 
@@ -264,4 +266,3 @@ colorscheme desert
 "Keys"
 nmap <F8> :TagbarToggle<CR>
 nnoremap <F5> :GundoToggle<CR>
-let mapleader=","
