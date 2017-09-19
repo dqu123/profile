@@ -13,3 +13,6 @@ update-vimrc:
 
 update-tmux:
 	cp .tmux.conf ~
+
+fresh-install: update
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
