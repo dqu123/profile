@@ -9,9 +9,11 @@ pull-tmux:
 update: update-vimrc update-tmux
 
 update-vimrc:
+	cp ~/.vimrc ~/.vimrc.bak
 	cp .vimrc ~
 
 update-tmux:
+	cp ~/.tmux.conf ~/.tmux.conf.bak
 	cp .tmux.conf ~
 
 fresh-install: update

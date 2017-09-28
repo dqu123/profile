@@ -39,6 +39,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
 Plugin 'rking/ag.vim'
 Plugin 'bkad/CamelCaseMotion'
+Plugin 'vim-latex/vim-latex'
 "Plugin 'pangloss/vim-javascript'
 "Plugin 'mxw/vim-jsx'
 
@@ -124,6 +125,11 @@ endif
 
 " CamelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
+
+" vim-latex
+"let g:Tex_TreatMacViewerAsUNIX = 1
+"let g:Tex_defaultTargetFormat = 'pdf'
+"let g:Tex_ViewRule_pdf = 'open -a Preview'
 
 " ==== Custom navigation ====
 "
@@ -237,6 +243,8 @@ if has("autocmd")
     \ endif
   " Remove trailing spaces
   autocmd BufWritePre * execute ':silent! %s/\s\+$//g'
+  " Compile LaTeX on write
+  autocmd BufWritePost *.tex silent call Tex_RunLaTeX()
 
   augroup END
 
