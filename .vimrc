@@ -40,6 +40,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'rking/ag.vim'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'vim-latex/vim-latex'
+Plugin 'google/yapf'
 "Plugin 'pangloss/vim-javascript'
 "Plugin 'mxw/vim-jsx'
 
@@ -243,6 +244,8 @@ if has("autocmd")
     \ endif
   " Remove trailing spaces
   autocmd BufWritePre * execute ':silent! %s/\s\+$//g'
+  " Format Python
+  autocmd BufWritePre *.py execute ':exe expand("!yapf -i %") | e | w'
   " Compile LaTeX on write
   autocmd BufWritePost *.tex silent call Tex_RunLaTeX()
 
