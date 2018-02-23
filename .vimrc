@@ -39,10 +39,11 @@ Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
 Plugin 'rking/ag.vim'
 Plugin 'bkad/CamelCaseMotion'
-Plugin 'vim-latex/vim-latex'
+"Plugin 'vim-latex/vim-latex'
 Plugin 'google/yapf'
 "Plugin 'pangloss/vim-javascript'
 "Plugin 'mxw/vim-jsx'
+Plugin 'tpope/vim-abolish'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -249,6 +250,13 @@ if has("autocmd")
   " Compile LaTeX on write
   autocmd BufWritePost *.tex silent call Tex_RunLaTeX()
 
+  augroup END
+
+  " Folds
+  augroup remember_folds
+    autocmd!
+    autocmd BufWinLeave *.* mkview
+    autocmd BufWinEnter *.* loadview
   augroup END
 
 else
