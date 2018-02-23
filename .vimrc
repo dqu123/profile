@@ -70,6 +70,11 @@ endif
 
 let mapleader=","
 
+try
+   source ~/.vim/dq/ycm.vim
+catch
+endtry
+
 " vim-go
 let g:go_fmt_experimental = 1
 
@@ -131,16 +136,17 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 "let g:Tex_TreatMacViewerAsUNIX = 1
 "let g:Tex_defaultTargetFormat = 'pdf'
 "let g:Tex_ViewRule_pdf = 'open -a Preview'
+nmap <C-D> <Plug>IMAP_JumpForward
 
 " ==== Custom navigation ====
 "
 " " Control-L is escape.
- nmap <C-L> <ESC>
- imap <C-L> <ESC>
+nmap <C-L> <ESC>
+imap <C-L> <ESC>
 "
 " " Navigating tabs and windows.
- nmap <C-J> :tabprevious<CR>
- nmap <C-K> :tabnext<CR>
+nmap <C-J> :tabprevious<CR>
+nmap <C-K> :tabnext<CR>
 "
 "
 
@@ -245,7 +251,8 @@ if has("autocmd")
   " Remove trailing spaces
   autocmd BufWritePre * execute ':silent! %s/\s\+$//g'
   " Format Python
-  autocmd BufWritePre *.py execute ':exe expand("!yapf -i %") | e | w'
+  "autocmd BufWritePre *.py execute ':exe expand("!yapf -i %") | e | w'
+
   " Compile LaTeX on write
   autocmd BufWritePost *.tex silent call Tex_RunLaTeX()
 
