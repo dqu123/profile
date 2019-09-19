@@ -7,3 +7,10 @@ alias pull="git pull"
 alias push="git push"
 alias ga="git add"
 alias gd="git diff"
+
+# git tips and tricks
+
+# Revert file to version in master:
+# git checkout origin/master [filename]
+alias git-restore="git checkout origin/master "
+
