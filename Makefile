@@ -18,3 +18,10 @@ update-tmux:
 
 fresh-install: update
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+
+## TODO: Add command to manage .bash_profile
+# Profile
+#source "$HOME/profile/bash/git.sh"
+#source "$HOME/profile/bash/npm.sh"
+#source "$HOME/profile/bash/xml.sh"
