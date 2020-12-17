@@ -19,7 +19,8 @@ alias git-copy-branch="git branch | grep '^\*' | cut -d' ' -f2 | pbcopy"
 alias git-restore="git checkout origin/master "
 
 ## Language specific
-alias git-profanity="git diff --cached | egrep '\.only|console\.log'"
+alias git-profanity="git diff | egrep '\.only|console\.log'"
+alias git-profanity-cached="git diff --cached | egrep '\.only|console\.log'"
 
 ## TODO: add command for ignore whitespace
 #    git diff -w core/ server/jobs/postgres_db_lock_monitor.go | git apply --cached --ignore-whitespace
