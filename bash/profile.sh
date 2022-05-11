@@ -4,5 +4,5 @@ export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 alias last-email="tail ~/emails.log"
 alias copy-last-cmd="fc -ln -1 | xsel --clipboard"
 
-source ./git.sh
-source ./docker.sh
+source git.sh
+source docker.sh
