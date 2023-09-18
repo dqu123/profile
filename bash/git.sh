@@ -14,3 +14,5 @@ alias gd="git diff"
 # git checkout origin/master [filename]
 alias git-restore="git checkout origin/master "
 
+# Cleans up git stash
+alias git-reflog-stash="git reflog expire --expire-unreachable=40.days refs/stash"
